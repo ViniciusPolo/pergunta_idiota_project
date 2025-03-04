@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PerguntaIdiotaApplication<pergunta-idiota>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.example.pergunta_idiota.PerguntaIdiotaApplication",
+      "projectName": "pergunta-idiota",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
