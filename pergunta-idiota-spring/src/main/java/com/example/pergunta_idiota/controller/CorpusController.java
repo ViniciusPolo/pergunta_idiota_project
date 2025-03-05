@@ -20,12 +20,12 @@ public class CorpusController {
       this.corpusService = corpusService;
   }
 
-  @GetMapping
+  @GetMapping("/")
   public List<Corpus> getCorpus() {
     return corpusService.getCorpus();
   }
 
-  @PostMapping
+  @PostMapping("/")
   public Corpus createCorpus(@RequestBody Corpus corpus) {
     return corpusService.createCorpus(corpus);
   }
