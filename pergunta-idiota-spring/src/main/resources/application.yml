@@ -11,6 +11,12 @@ spring:
   h2:
     console:
       enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/pergunta_idiota
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 server:
   port: 8081
 management:
