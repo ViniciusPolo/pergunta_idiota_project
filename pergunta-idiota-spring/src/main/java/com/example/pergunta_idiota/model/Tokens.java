@@ -1,12 +1,12 @@
 package com.example.pergunta_idiota.model;
 
-import jakarta.persistence.CascadeType;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -14,30 +14,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "corpus")
-public class Corpus {
+@Table(name = "tokens")
+public class Tokens {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "title", nullable = false)
-  private String title;
   @Column(name = "text", nullable = false)
   private String text;
-  @Column(name = "language", nullable = true)
-  private String language;
-  @Column(name = "font", nullable = true)
-  private String font;
-  @OneToMany(mappedBy = "corpus", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Occurrences> occurrences;
+  @Column(name = "pos_tag", nullable = false)
+  private String pos_tag;
+  @Column(name = "lema", nullable = false)
+  private String lema;
   @Temporal(TemporalType.TIMESTAMP)
   @Column(name = "created_at", nullable = false, updatable = false)
-  private Date createdAt = new Date();  // Auto-set timestamp
+  private Date createdAt = new Date();
+
 }
