@@ -10,20 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pergunta_idiota.model.Corpus;
-import com.example.pergunta_idiota.model.Tokens;
 import com.example.pergunta_idiota.service.CorpusService;
-import com.example.pergunta_idiota.service.Tokenizer;
 
 @RestController
 @RequestMapping("/corpus")
 public class CorpusController {
   private final CorpusService corpusService;
-  private final Tokenizer tokenizer;
   
-    public CorpusController(CorpusService corpusService, Tokenizer tokenizer) {
+    public CorpusController(CorpusService corpusService) {
       this.corpusService = corpusService;
-      this.tokenizer = tokenizer;
-    }
+  }
 
   @GetMapping("/")
   @PreAuthorize("hasRole('USER')")
@@ -34,12 +30,9 @@ public class CorpusController {
   @PostMapping("/")
   @PreAuthorize("hasRole('USER')")
   public Corpus createCorpus(@RequestBody Corpus corpus) {
-      corpusService.createCorpus(corpus);
-    
-      String textoCorpus = corpus.getText(); // Certifique-se de que `getText()` existe
-      tokenizer.tokenizeAndSave(textoCorpus); // Usa o método correto para tokenizar e salvar
-    
-      return corpusService.createCorpus(corpus);
+    return corpusService.createCorpus(corpus);
   }
-  
+
+
+
 }

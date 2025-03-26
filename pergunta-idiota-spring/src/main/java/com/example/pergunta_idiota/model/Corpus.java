@@ -29,7 +29,7 @@ public class Corpus {
 
   @Column(name = "title", nullable = false)
   private String title;
-  @Column(name = "text", nullable = false, length = 2000)
+  @Column(name = "text", nullable = false)
   private String text;
   @Column(name = "language", nullable = true)
   private String language;
