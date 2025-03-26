@@ -1,0 +1,16 @@
+{
+  "name": "pln",
+  "version": "1.0.0",
+  "description": "chatbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinicius Polo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "python-shell": "^5.0.0",
+    "ws": "^8.18.1"
+  }
+}

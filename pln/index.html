@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot WebSocket</title>
+</head>
+<body>
+    <h2>Chatbot via WebSocket</h2>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Digite sua mensagem..." />
+    <button onclick="sendMessage()">Enviar</button>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:3000");
+
+        ws.onopen = () => console.log("Conectado ao servidor WebSocket");
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            document.getElementById("chat").innerHTML += `<p><strong>Chatbot:</strong> ${data.response}</p>`;
+        };
+        ws.onerror = (error) => console.log("Erro WebSocket:", error);
+        ws.onclose = () => console.log("WebSocket desconectado");
+
+        function sendMessage() {
+            const input = document.getElementById("message");
+            const message = input.value;
+            if (message) {
+                document.getElementById("chat").innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
+                ws.send(JSON.stringify({ message }));
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
