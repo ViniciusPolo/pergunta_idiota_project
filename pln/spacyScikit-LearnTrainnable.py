@@ -2,13 +2,17 @@ import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+import json
+
 nlp = spacy.load("pt_core_news_sm")
 
-perguntas_respostas = {
-    "Qual é a capital do Brasil?": "A capital do Brasil é Brasília.",
-    "Quem descobriu o Brasil?": "Pedro Álvares Cabral descobriu o Brasil em 1500.",
-    "Qual é o maior time de futebol do mundo?": "Isso é uma questão de opinião, mas muitos consideram o Real Madrid ou o Flamengo.",
-}
+dataBase = 'base_pergunta_idiota.json'
+
+# Open and read the JSON file
+with open(dataBase, 'r') as file:
+    data = json.load(file)
+
+perguntas_respostas = (data)
 
 def responder(pergunta):
     perguntas = list(perguntas_respostas.keys())
